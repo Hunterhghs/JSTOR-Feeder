@@ -210,7 +210,8 @@ a:hover {
 
 .hero-content {
     max-width: 800px;
-    margin-left: 15%;
+    margin: 0 auto;
+    text-align: center;
     position: relative;
     z-index: 2;
     animation: fadeInUp 0.8s ease forwards;
@@ -236,10 +237,12 @@ a:hover {
     margin-bottom: var(--space-md);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-sm);
 }
 
-.hero-eyebrow::before {
+.hero-eyebrow::before,
+.hero-eyebrow::after {
     content: '';
     width: 40px;
     height: 1px;
@@ -261,11 +264,12 @@ a:hover {
     line-height: 1.8;
     color: var(--color-ink-soft);
     max-width: 600px;
-    margin-bottom: var(--space-xl);
+    margin: 0 auto var(--space-xl);
 }
 
 .hero-stats {
     display: flex;
+    justify-content: center;
     gap: var(--space-xl);
     padding-top: var(--space-lg);
     border-top: 1px solid rgba(30, 58, 47, 0.1);
@@ -511,6 +515,63 @@ a:hover {
     background: var(--color-gold-light);
     color: var(--color-ink);
     transform: translateY(-1px);
+}
+
+/* =====================================================
+   Infographics Section
+   ===================================================== */
+
+.infographics-section {
+    padding: var(--space-2xl) var(--space-lg);
+    background: var(--color-cream);
+}
+
+.infographics-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.infographic-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--color-parchment);
+    border: 1px solid rgba(30, 58, 47, 0.08);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    cursor: pointer;
+}
+
+.infographic-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(30, 58, 47, 0.15);
+}
+
+.infographic-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform var(--transition-slow);
+}
+
+.infographic-item:hover img {
+    transform: scale(1.02);
+}
+
+/* Lightbox overlay for clicking images */
+.infographic-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(30, 58, 47, 0.4) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.infographic-item:hover::after {
+    opacity: 1;
 }
 
 /* =====================================================
@@ -767,10 +828,6 @@ a:hover {
     
     .publications-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .hero-content {
-        margin-left: 5%;
     }
 }
 
